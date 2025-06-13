@@ -13,16 +13,15 @@
       box-sizing: border-box;
     }
 
-    body {
+    html, body {
+      height: 100dvh;
+      overflow: hidden; /* Prevent scrolling */
       font-family: 'Crimson Text', serif;
       background: url('https://www.transparenttextures.com/patterns/paper.png'), linear-gradient(to right, #e8d8b8, #d9c2a6);
       background-blend-mode: overlay;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      height: 100vh; /* Ensure body takes full viewport height */
-      overflow: hidden; /* Prevent scrolling */
     }
 
     .container {
@@ -35,16 +34,16 @@
       border-radius: 20px;
       display: flex;
       flex-direction: column;
-      position: relative;
-      margin: 10px;
+      min-height: 90dvh;
+      overflow: hidden; /* Prevent internal scrolling */
     }
 
     h2 {
       font-family: 'Great Vibes', cursive;
       color: #4a3725;
-      font-size: 2.8rem;
+      font-size: 3rem; /* Increased font size */
       text-align: center;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     }
 
@@ -52,21 +51,21 @@
       flex-grow: 1; /* Allow textarea to fill available space */
       display: flex;
       flex-direction: column;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
 
     textarea {
       width: 100%;
-      flex-grow: 1; /* Fill available space */
-      min-height: 180px;
+      min-height: 25rem;
+      flex-grow: 1;
       padding: 15px;
       border: 2px solid #b89e7e;
       border-radius: 12px;
       font-family: 'Crimson Text', serif;
-      font-size: 1.1rem;
+      font-size: 1.3rem; /* Increased font size */
       background: #fffef8;
       color: #4a3725;
-      resize: none; /* Disable resizing to prevent overflow */
+      resize: none; /* Disable resizing */
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
       outline: none;
       z-index: 2;
@@ -75,6 +74,7 @@
     textarea::placeholder {
       color: #8a7a66;
       font-style: italic;
+      font-size: 1.3rem; /* Match textarea font size */
     }
 
     textarea:focus {
@@ -90,7 +90,7 @@
       border: none;
       border-radius: 10px;
       font-family: 'Crimson Text', serif;
-      font-size: 1.2rem;
+      font-size: 1.4rem; /* Increased font size */
       font-weight: 700;
       letter-spacing: 1px;
       cursor: pointer;
@@ -129,7 +129,7 @@
       width: 60px;
       height: 3px;
       background: #a68a64;
-      margin: 1rem auto;
+      margin: 0.5rem auto;
       border-radius: 2px;
     }
 
@@ -138,29 +138,32 @@
       .container {
         padding: 1.5rem;
         max-width: 95vw;
-        margin: 5px;
       }
 
       h2 {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
       }
 
       textarea {
-        font-size: 1rem;
+        font-size: 1.2rem;
+      }
+
+      textarea::placeholder {
+        font-size: 1.2rem;
       }
 
       .submit-btn {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
         padding: 12px;
       }
     }
 
     @media (max-width: 480px) {
-      body {
-        padding: 0;
+      html, body {
         margin: 0;
+        padding: 0;
         height: 100vh;
-        overflow: hidden; /* Prevent scrolling */
+        overflow: hidden;
       }
 
       .container {
@@ -174,30 +177,32 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        overflow: hidden; /* Prevent internal scrolling */
+        overflow: hidden;
       }
 
       h2 {
-        font-size: 1.8rem;
-        margin-bottom: 0.5rem;
+        font-size: 2rem;
       }
 
       .form-group {
         flex-grow: 1;
+        margin-bottom: 0.5rem;
       }
 
       textarea {
-        height: calc(100vh - 150px); /* Adjust to fit header and button */
-        min-height: unset; /* Remove min-height to avoid overflow */
-        font-size: 1rem;
+        height: calc(100vh - 180px); /* Adjusted for header, button, and padding */
+        font-size: 1.2rem;
         padding: 12px;
         border-radius: 8px;
       }
 
+      textarea::placeholder {
+        font-size: 1.2rem;
+      }
+
       .submit-btn {
         padding: 15px;
-        font-size: 1rem;
-        margin-top: 0.5rem;
+        font-size: 1.3rem;
       }
 
       .decorative-line {
@@ -207,16 +212,20 @@
 
     @media (max-width: 360px) {
       h2 {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
       }
 
       textarea {
-        font-size: 0.95rem;
+        font-size: 1.1rem;
         padding: 10px;
       }
 
+      textarea::placeholder {
+        font-size: 1.1rem;
+      }
+
       .submit-btn {
-        font-size: 0.95rem;
+        font-size: 1.2rem;
         padding: 12px;
       }
     }
