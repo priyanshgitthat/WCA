@@ -21,18 +21,20 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      padding: 0;
-      overflow-x: hidden;
+      height: 100vh; /* Ensure body takes full viewport height */
+      overflow: hidden; /* Prevent scrolling */
     }
 
     .container {
       background: #f9f1e7;
       padding: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       max-width: 600px;
       width: 100%;
       border: 2px solid #a68a64;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
       position: relative;
       margin: 10px;
     }
@@ -47,12 +49,15 @@
     }
 
     .form-group {
-      position: relative;
+      flex-grow: 1; /* Allow textarea to fill available space */
+      display: flex;
+      flex-direction: column;
       margin-bottom: 1.5rem;
     }
 
     textarea {
       width: 100%;
+      flex-grow: 1; /* Fill available space */
       min-height: 180px;
       padding: 15px;
       border: 2px solid #b89e7e;
@@ -61,7 +66,7 @@
       font-size: 1.1rem;
       background: #fffef8;
       color: #4a3725;
-      resize: vertical;
+      resize: none; /* Disable resizing to prevent overflow */
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
       outline: none;
       z-index: 2;
@@ -141,7 +146,6 @@
       }
 
       textarea {
-        min-height: 200px;
         font-size: 1rem;
       }
 
@@ -154,19 +158,23 @@
     @media (max-width: 480px) {
       body {
         padding: 0;
-        align-items: flex-start;
+        margin: 0;
+        height: 100vh;
+        overflow: hidden; /* Prevent scrolling */
       }
 
       .container {
         width: 100vw;
-        min-height: 100vh;
-        border-radius: 0;
-        margin: 0;
+        height: 100vh;
         padding: 1rem;
+        margin: 0;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        box-shadow: none;
+        overflow: hidden; /* Prevent internal scrolling */
       }
 
       h2 {
@@ -176,12 +184,11 @@
 
       .form-group {
         flex-grow: 1;
-        display: flex;
-        flex-direction: column;
       }
 
       textarea {
-        min-height: calc(100vh - 200px); /* Adjust height to fill most of the screen */
+        height: calc(100vh - 150px); /* Adjust to fit header and button */
+        min-height: unset; /* Remove min-height to avoid overflow */
         font-size: 1rem;
         padding: 12px;
         border-radius: 8px;
@@ -190,7 +197,7 @@
       .submit-btn {
         padding: 15px;
         font-size: 1rem;
-        margin-top: 1rem;
+        margin-top: 0.5rem;
       }
 
       .decorative-line {
