@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anonymous Feedback</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Great+Vibes&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Crimson Text', serif;
+      background: url('https://www.transparenttextures.com/patterns/paper.png'), linear-gradient(to right, #e8d8b8, #d9c2a6);
+      background-blend-mode: overlay;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background: #f9f1e7;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      width: 100%;
+      border: 2px solid #a68a64;
+      position: relative;
+    }
+
+    h2 {
+      font-family: 'Great Vibes', cursive;
+      color: #4a3725;
+      font-size: 2.8rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 180px;
+      padding: 15px;
+      border: 2px solid #b89e7e;
+      border-radius: 12px;
+      font-family: 'Crimson Text', serif;
+      font-size: 1.1rem;
+      background: #fffef8;
+      color: #4a3725;
+      resize: vertical;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      outline: none;
+      z-index: 2; /* Ensure textarea is above other elements */
+    }
+
+    textarea::placeholder {
+      color: #8a7a66;
+      font-style: italic;
+    }
+
+    textarea:focus {
+      border-color: #a68a64;
+      box-shadow: 0 0 10px rgba(166, 138, 100, 0.3);
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(to right, #6d4e2f, #8a6142);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Crimson Text', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 2; /* Ensure button is clickable */
+    }
+
+    .submit-btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: transform 0.5s ease;
+    }
+
+    .submit-btn:hover::after {
+      transform: translateX(200%);
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .decorative-line {
+      width: 60px;
+      height: 3px;
+      background: #a68a64;
+      margin: 1rem auto;
+      border-radius: 2px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 2rem;
+        max-width: 90vw;
+      }
+
+      h2 {
+        font-size: 2.2rem;
+      }
+
+      textarea {
+        min-height: 140px;
+      }
+
+      .submit-btn {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 1.5rem;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+      }
+
+      textarea {
+        font-size: 1rem;
+        padding: 12px;
+      }
+
+      .submit-btn {
+        padding: 12px;
+        font-size: 1rem;
+      }
+
+      .decorative-line {
+        width: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Anonymous Feedback</h2>
+    <div class="decorative-line"></div>
+    <form id="feedback-form" action="https://formspree.io/f/mblyonky" method="POST">
+      <input type="hidden" name="form-name" value="feedback">
+      <div class="form-group">
+        <textarea id="message" name="message" placeholder="Share your thoughts anonymously..." required></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Submit Feedback</button>
+    </form>
+  </div>
+
+  <script>
+    // Optional: Add basic form submission feedback
+    document.getElementById('feedback-form').addEventListener('submit', function (event) {
+      event.preventDefault(); // Prevent default for testing
+      const textarea = document.getElementById('message');
+      if (textarea.value.trim() === '') {
+        alert('Please enter your feedback before submitting.');
+        return;
+      }
+      // Uncomment to allow actual form submission
+      // this.submit();
+      alert('Feedback submitted successfully!'); // Temporary feedback for testing
+    });
+  </script>
+</body>
+</html>
